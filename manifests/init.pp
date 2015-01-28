@@ -4,7 +4,7 @@ class nginx (
   ) inherits nginx::params {
 
   package { 'nginx':
-    ensure => $::nginx::version;
+    ensure => $version;
     }
 
   service { 'nginx':
