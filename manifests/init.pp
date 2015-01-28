@@ -17,4 +17,6 @@ class nginx (
     }
 
   if $passenger == true {
+    notify { "Passenger is True": }
+  }
 }
