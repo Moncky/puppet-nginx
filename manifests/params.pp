@@ -1,7 +1,7 @@
 class nginx::params {
 
-  $version = "installed",
-  $passenger = "false",
+  $version = "installed"
+  $passenger = "false"
 
 
 }
