@@ -21,6 +21,12 @@ class nginx (
       ensure => present,
     }
 
-    notify { "Passenger is True": }
+    package { 'nginx-extras':
+      ensure => present,
+    }
+
+    package { 'passenger':
+      ensure => present,
+    }
   }
 }
