@@ -1,6 +1,6 @@
 class nginx (
   $version = $::nginx::version,
-  $passenger = false,
+  $passenger = $::nginx::passenger,
   ) inherits nginx::params {
 
   package { 'nginx':
@@ -16,4 +16,5 @@ class nginx (
     content => template('nginx/nginx.conf.erb'),
     }
 
+  if $passenger == true {
 }

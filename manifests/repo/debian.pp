@@ -9,6 +9,7 @@ class nginx::repo::debian {
     key          => "7BD9BF62",
     key_source   => "http://nginx.org/keys/nginx_signing.key",
     include_src => false,
+  }
 
   apt::source { "passenger":
     location => "https://oss-binaries.phusionpassenger.com/apt/passenger/",
@@ -16,6 +17,6 @@ class nginx::repo::debian {
     repos => "main",
     key => '561F9B9CAC40B2F7',
     key_server => 'keyserver.ubuntu.com',
-    }
+  }
 
 }
