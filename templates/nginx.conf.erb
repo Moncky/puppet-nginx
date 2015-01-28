@@ -58,7 +58,7 @@ http {
   ##
   # nginx-passenger config
 
-<% if scope['::passenger' = true -%>
+<% if scope['::passenger'] = true -%>
   #passenger_root /usr;
   #passenger_ruby /usr/bin/ruby;
 <% else -%>
