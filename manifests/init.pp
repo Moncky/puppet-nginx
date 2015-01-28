@@ -4,7 +4,7 @@ class nginx (
   ) inherits nginx::params {
 
   if $passenger == true {
-    $packages = '[nginx-extras', 'apt-transport-https', 'passenger']
+    $packages = ['nginx-extras', 'apt-transport-https', 'passenger']
   }
   else {
     $packages = 'nginx'
