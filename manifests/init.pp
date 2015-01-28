@@ -17,6 +17,10 @@ class nginx (
     }
 
   if $passenger == true {
+    package { 'apt-transport-https':
+      ensure => present,
+    }
+
     notify { "Passenger is True": }
   }
 }
