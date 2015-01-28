@@ -16,7 +16,7 @@ class nginx::repo::debian {
     release => "${lsbdistcodename}",
     repos => "main",
     key => '561F9B9CAC40B2F7',
-    key_server => 'keyserver.ubuntu.com:80',
+    key_server => 'hkp://keyserver.ubuntu.com:80',
   }
 
 }
