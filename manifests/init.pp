@@ -3,12 +3,15 @@ class nginx (
   $passenger = $::nginx::passenger,
   ) inherits nginx::params {
 
-  package { 'nginx':
-    ensure => $version;
-    }
+  if $passenger == true {
+    $packages = '[nginx-extras', 'apt-transport-https', 'passenger']
+  }
+  else {
+    $packages = 'nginx'
+  }
 
-  service { 'nginx':
-    ensure => running,
+  package { $packages:
+    ensure => $version;
     }
 
   file { '/etc/nginx/nginx.conf':
@@ -16,17 +19,7 @@ class nginx (
     content => template('nginx/nginx.conf.erb'),
     }
 
-  if $passenger == true {
-    package { 'apt-transport-https':
-      ensure => present,
-    }
-
-    package { 'nginx-extras':
-      ensure => present,
-    }
-
-    package { 'passenger':
-      ensure => present,
-    }
+  service { 'nginx':
+    ensure => running,
   }
 }
