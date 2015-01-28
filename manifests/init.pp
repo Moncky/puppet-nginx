@@ -1,4 +1,7 @@
-class nginx inherits nginx::params {
+class nginx (
+  $version = $::nginx::version,
+  $passenger = false,
+  ) inherits nginx::params {
 
   package { 'nginx':
     ensure => $::nginx::version;
