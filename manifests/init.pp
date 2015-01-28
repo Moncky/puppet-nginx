@@ -4,4 +4,8 @@ class nginx {
     ensure => $::nginx::version;
     }
 
+  service { 'nginx':
+    ensure => running,
+    }
+
 }
