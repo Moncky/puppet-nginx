@@ -1,25 +1,13 @@
 class nginx (
   $version = $::nginx::version,
   $passenger = $::nginx::passenger,
+  $unicorn = $::nginx::unicorn,
   ) inherits nginx::params {
 
-  if $passenger == true {
-    $packages = ['nginx-extras', 'apt-transport-https', 'passenger']
-  }
-  else {
-    $packages = 'nginx'
-  }
+  anchor { 'nginx::start': } ~>
+  anchor { 'nginx::repo': } ~>
+  anchor { 'nginx::install': } ~>
+  anchor { 'nginx::config': } ~>
+  anchor { 'nginx::end': }
 
-  package { $packages:
-    ensure => $version;
-    }
-
-  file { '/etc/nginx/nginx.conf':
-    ensure => present,
-    content => template('nginx/nginx.conf.erb'),
-    }
-
-  service { 'nginx':
-    ensure => running,
-  }
 }
