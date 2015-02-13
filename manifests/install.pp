@@ -1,5 +1,7 @@
 class nginx::install inherits nginx {
 
+  contain nginx::repo
+
   if $passenger == true {
     $packages = ['nginx-extras', 'apt-transport-https', 'passenger']
   }

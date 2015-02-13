@@ -4,10 +4,5 @@ class nginx (
   $unicorn = $::nginx::unicorn,
   ) inherits nginx::params {
 
-  anchor { 'nginx::start': } ~>
-  anchor { 'nginx::repo': } ~>
-  anchor { 'nginx::install': } ~>
-  anchor { 'nginx::config': } ~>
-  anchor { 'nginx::end': }
-
+  contain nginx::install
 }
