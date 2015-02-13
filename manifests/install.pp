@@ -1,4 +1,4 @@
-class nginx::install {
+class nginx::install inherits nginx {
 
   if $passenger == true {
     $packages = ['nginx-extras', 'apt-transport-https', 'passenger']

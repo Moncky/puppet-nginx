@@ -11,7 +11,7 @@ class nginx::repo::debian {
     include_src => false,
   }
 
-  if $nginx::passenger {
+  if str2bool("${nginx::passenger}") {
     apt::source { "passenger":
       location => "https://oss-binaries.phusionpassenger.com/apt/passenger/",
       release => "${lsbdistcodename}",
